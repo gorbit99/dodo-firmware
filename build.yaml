@@ -14,4 +14,6 @@
 ---
 include:
   - board: seeeduino_xiao_ble
-    shield: dodo
+    shield: dodo_left
+  - board: seeeduino_xiao_ble
+    shield: dodo_right
