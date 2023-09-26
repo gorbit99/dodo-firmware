@@ -1,0 +1,12 @@
+file_format: "1"
+id: dodo
+name: Dodo
+type: shield
+url: https://github.com/gorbit99/dodo-firmware
+requires: [seeeduino_xiao_ble]
+exposes: []
+features:
+  - keys
+siblings:
+  - dodo_left
+  - dodo_right

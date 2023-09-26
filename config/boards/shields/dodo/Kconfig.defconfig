@@ -1,0 +1,18 @@
+if SHIELD_DODO_LEFT
+
+  config ZMK_KEYBOARD_NAME
+    default "Dodo"
+
+  config ZMK_SPLIT_ROLE_CENTRAL
+    default y
+
+endif
+
+if SHIELD_DODO_LEFT || SHIELD_DODO_RIGHT
+
+  config ZMK_SPLIT
+    default y
+
+  config SPI
+    default y
+endif
