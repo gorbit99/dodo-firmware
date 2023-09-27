@@ -13,6 +13,7 @@
 		label = "MCP23S17";
 		#gpio-cells = <2>;
 		ngpios = <16>;
+        int-gpios = <&xiao_d 6 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
 	};
 };
 
