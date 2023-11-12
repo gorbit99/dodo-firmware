@@ -1,21 +1,64 @@
 #include <behaviors.dtsi>
+#include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
 
 / {
+    behaviors {
+        media_control: media_control {
+            compatible = "zmk,behavior-tap-dance";
+            label = "MEDIA_CONTROL";
+            #binding-cells = <0>;
+            bindings = <&kp K_PLAY_PAUSE>, <&kp K_NEXT>, <&kp K_PREV>;
+        };
+        rgb_brightness: rgb_brightness {
+            compatible = "zmk,behavior-sensor-rotate";
+            label = "RGB_BRIGHTNESS";
+            #sensor-binding-cells = <0>;
+            bindings = <&rgb_ug RGB_BRI>, <&rgb_ug RGB_BRD>;
+        };
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
         default_layer {
             bindings = <
-    &kp N0     &kp N1   &kp N2   &kp N3    &kp N4    &kp N5                         &kp N6    &kp N7    &kp N8    &kp 9     &kp MINUS &kp EQUAL
-    &kp ESC    &kp Q    &kp W    &kp E     &kp R     &kp T                          &kp Y     &kp U     &kp I     &kp O     &kp P     &kp BSLH
-    &kp TAB    &kp A    &kp S    &kp D     &kp F     &kp G                          &kp H     &kp J     &kp K     &kp L     &kp SEMI  &kp SQT
-    &kp LSHIFT &kp Z    &kp X    &kp C     &kp V     &kp B      &kp LC(A) &kp LC(X) &kp N     &kp M     &kp COMMA &kp DOT   &kp FSLH  &kp RCTRL
-                        &kp A    &kp LGUI  &kp DEL   &kp RET    &kp SPACE &kp SPACE &kp TAB   &kp BSPC  &kp RALT  &kp A
-                                                                &kp A     &kp B
+&kp N0      &kp N1  &kp N2  &kp N3    &kp N4            &kp N5                                    &kp N6     &kp N7         &kp N8     &kp N9   &kp MINUS  &kp EQUAL
+&kp TAB     &kp Q   &kp W   &kp E     &kp R             &kp T                                     &kp Y      &kp U          &kp I      &kp O    &kp P      &kp LEFT_BRACKET
+&kp ESCAPE  &kp A   &kp S   &kp D     &kp F             &kp G                                     &kp H      &kp J          &kp K      &kp L    &kp SEMI   &kp SQT
+&kp LSHIFT  &kp Z   &kp X   &kp C     &kp V             &kp B          &mo 1           &mo 1      &kp N      &kp M          &kp COMMA  &kp DOT  &kp FSLH   &kp RCTRL
+                    &mo 2   &kp LGUI  &kp LEFT_CONTROL  &kp BACKSPACE  &kp SPACE       &kp ENTER  &kp SPACE  &kp RIGHT_ALT  &kp RALT   &kp A
+                                                                       &media_control  &kp SPACE
             >;
 
-            sensor-bindings = <&inc_dec_kp A B &inc_dec_kp C D>;
+            sensor-bindings =
+                <&inc_dec_kp K_VOLUME_UP K_VOLUME_DOWN>,
+                <&inc_dec_kp RIGHT LEFT>;
+        };
+
+        rare_keys {
+            bindings = <
+&kp F1  &kp F2  &kp F3    &kp F4    &kp F5  &kp F6                                       &kp F7  &kp F8     &kp F9     &kp F10         &kp F11       &kp F12
+&trans  &trans  &trans    &trans    &trans  &kp PRINTSCREEN                              &trans  &kp KP_N7  &kp KP_N8  &kp KP_N9       &kp KP_MINUS  &trans
+&trans  &trans  &kp LEFT  &kp DOWN  &kp UP  &kp RIGHT                                    &trans  &kp KP_N4  &kp KP_N5  &kp KP_N6       &kp KP_PLUS   &trans
+&trans  &trans  &trans    &trans    &trans  &kp K_NEXT       &trans              &trans  &trans  &kp KP_N1  &kp KP_N2  &kp KP_N3       &kp KP_ENTER  &trans
+                &trans    &trans    &trans  &trans           &kp LA(LEFT_SHIFT)  &trans  &trans  &trans     &kp KP_N0  &kp LS(KP_DOT)
+                                                             &trans              &trans
+            >;
+        };
+
+        keyboard_control {
+            bindings = <
+&trans  &trans  &trans  &trans  &trans  &trans                           &trans      &trans      &trans      &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                           &trans      &trans      &trans      &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans                           &bt BT_CLR  &bt BT_PRV  &bt BT_NXT  &trans  &trans  &trans
+&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans           &trans      &trans      &trans      &trans  &trans  &trans
+                &trans  &trans  &trans  &trans  &trans  &trans           &trans      &trans      &trans      &trans
+                                                &trans  &rgb_ug RGB_EFF
+            >;
+
+            sensor-bindings = <&inc_dec_kp 0 0>, <&rgb_brightness>;
         };
     };
 };
