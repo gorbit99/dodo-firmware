@@ -1,13 +1,12 @@
 #include "dodo.dtsi" // Notice that the main dtsi files are included in the overlay.
 
-&kscan1 {
-    col-gpios
-        = <&expander 0 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&expander 1 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&expander 2 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&expander 3 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&expander 4 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
-        , <&expander 5 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+&kscan_matrix {
+    row-gpios
+        = <&expander 12 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&expander 11 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&expander 10 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&expander 9 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
+        , <&expander 8 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>
         ;
 };
 

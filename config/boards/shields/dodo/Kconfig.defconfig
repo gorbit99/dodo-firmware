@@ -24,4 +24,7 @@ if SHIELD_DODO_LEFT || SHIELD_DODO_RIGHT
     
   config ZMK_DISPLAY
     default y
+
+  config ZMK_PM_SOFT_OFF
+    default y
 endif
