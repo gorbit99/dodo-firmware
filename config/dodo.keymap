@@ -11,6 +11,7 @@
             #binding-cells = <0>;
             bindings = <&kp K_PLAY_PAUSE>, <&kp K_NEXT>, <&kp K_PREV>;
         };
+
         rgb_brightness: rgb_brightness {
             compatible = "zmk,behavior-sensor-rotate";
             label = "RGB_BRIGHTNESS";
@@ -50,15 +51,13 @@
 
         keyboard_control {
             bindings = <
-&trans  &trans  &trans  &trans  &trans  &trans                           &trans      &trans      &trans      &trans  &trans  &bootloader
-&trans  &trans  &trans  &trans  &trans  &trans                           &trans      &trans      &trans      &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans                           &bt BT_CLR  &bt BT_PRV  &bt BT_NXT  &trans  &trans  &trans
-&trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans           &trans      &trans      &trans      &trans  &trans  &trans
-                &trans  &trans  &trans  &trans  &trans  &trans           &trans      &trans      &trans      &trans
-                                                &trans  &rgb_ug RGB_EFF
+&trans  &trans  &trans  &trans           &trans           &trans                           &trans      &trans      &trans      &trans  &trans  &bootloader
+&trans  &trans  &trans  &rgb_ug RGB_HUD  &rgb_ug RGB_EFF  &rgb_ug RGB_HUI                  &trans      &trans      &trans      &trans  &trans  &trans
+&trans  &trans  &trans  &rgb_ug RGB_BRD  &rgb_ug RGB_TOG  &rgb_ug RGB_BRI                  &bt BT_CLR  &bt BT_PRV  &bt BT_NXT  &trans  &trans  &trans
+&trans  &trans  &trans  &trans           &trans           &trans           &trans  &trans  &trans      &trans      &trans      &trans  &trans  &trans
+                &trans  &trans           &trans           &trans           &trans  &trans  &trans      &trans      &trans      &trans
+                                                                           &trans  &trans
             >;
-
-            sensor-bindings = <&inc_dec_kp 0 0>, <&rgb_brightness>;
         };
     };
 };
